@@ -2,42 +2,55 @@
 
 ## Site identity
 
+- **Brand name**: **Savannah Tree Pros** (decided 2026-09-07 — keeps
+  "Savannah"+"Tree" for direct query match, "Pros" is a real, common
+  pattern for trade businesses, not a stuffed exact-match domain).
 - **Niche**: Tree Removal (with Emergency/Storm and Large/Hazardous as
   service pages within it, not standalone niches — see
   `.claude/skills/microsite-agent/references/niche-research.md`)
 - **Market**: Savannah, GA (Chatham County metro)
-- **Domain**: **not chosen yet** — needs to be picked and purchased before
-  DNS/Cloudflare setup. Candidates to consider: `savannahtreeremoval.com`,
-  `savannahtreepros.com`.
-- **Phone**: **not set yet** — needs a real local (912) area code number
-  (see open questions below).
-- **Contact email**: not set yet.
+- **Domain**: placeholder `savannahtreepros.com` used throughout the code
+  (canonical tags, JSON-LD, footer, meta) — Roman is sourcing/confirming
+  the real one ("не проблема"), swap in one pass once confirmed, same
+  process used for NEXUS's domain.
+- **Phone**: placeholder `(912) 555-0100` / `+19125550100` — Roman will
+  buy a real 912-area-code number, swap in one pass once he has it.
+- **Contact email**: placeholder `info@savannahtreepros.com` — Roman is
+  creating the real one now.
 - **Who fulfills leads**: Roman has a contractor/plan lined up (confirmed
-  2026-09-07) — real licensing/insurance details still needed before
-  publishing any specific claim about them (see honesty rules in the
-  skill — do not fabricate numbers in the meantime).
+  2026-09-07). Real licensing/insurance specifics requested from him
+  (business/legal name, liability insurance + coverage amount if any,
+  bonded Y/N, certifications e.g. ISA Certified Arborist, years in
+  business) — **do not add any specific trust-claim numbers to the site
+  until those answers come back**; generic-true language only
+  ("Locally owned and operated", "Free estimates") until then.
 - **Hosting**: Cloudflare Pages (decided — this project does not use
-  Vercel/GitHub Pages like the `Project1` sites).
-- **Stack**: static HTML/CSS/JS, no build step. No Astro/Node.
+  Vercel/GitHub Pages like the `Project1` sites). Not connected yet.
+- **Stack**: static HTML/CSS/JS, no build step. No Astro/Node. Confirmed
+  working via local preview (Archivo/Work Sans fonts, forest green +
+  amber palette, reused the proven nav-dropdown lockedClosed pattern from
+  Project1 — verified with the same hover/click test method).
 
 ## Site architecture (Phase 1 — build this first)
 
 ### Core pages (8)
-- [ ] `/` (Home / Hub)
+- [x] `/` (Home / Hub) — built, previewed locally, nav dropdown verified
 - [ ] `/about/`
 - [ ] `/contact/`
 - [ ] `/free-estimate/`
 - [ ] `/service-areas/` (location hub — links to all Phase 1 location pages)
-- [ ] `/faq/`
+- [ ] `/faq/` (optional standalone — homepage already has a real FAQ block;
+      decide later if a dedicated page adds anything beyond that)
 - [ ] `/privacy-policy/`
 - [ ] `/terms/`
 
 ### Service pages (5 — within the 1–6 cap)
-- [ ] `/services/tree-removal/` (flagship — the broad, high-volume term)
-- [ ] `/services/emergency-storm-tree-removal/`
-- [ ] `/services/large-hazardous-tree-removal/`
-- [ ] `/services/tree-trimming-pruning/`
-- [ ] `/services/stump-grinding-removal/`
+- [x] `/services/tree-removal.html` (flagship — the broad, high-volume
+      term) — built, previewed locally
+- [ ] `/services/emergency-storm-tree-removal.html`
+- [ ] `/services/large-hazardous-tree-removal.html`
+- [ ] `/services/tree-trimming-pruning.html`
+- [ ] `/services/stump-grinding-removal.html`
 
 ### Location pages — Phase 1 (7, real ZIPs verified via web search 2026-09-07)
 - [ ] `/service-areas/pooler-ga/` — ZIP 31322
@@ -70,13 +83,26 @@ in the skill.
   GA), Phase 1 location list (7 areas, real ZIPs verified), hosting
   (Cloudflare Pages), stack (static HTML, no framework). Created
   `CLAUDE.md`, `.claude/skills/microsite-agent/SKILL.md` +
-  `references/niche-research.md`, and this file. No site pages built yet —
-  waiting on domain/phone/email/licensing inputs above before writing real
-  page content (placeholders would need real NAP data to be useful, and
-  trust-claim wording specifically must not be guessed).
+  `references/niche-research.md`, and this file.
+- *2026-09-07*: Roman confirmed: domain/phone/email can stay placeholders
+  for now (he'll swap in real ones), he has a contractor/plan lined up
+  (asked for specific licensing/insurance fields, awaiting answer), and
+  delegated brand naming + logo to me. Picked "Savannah Tree Pros". Built
+  `css/style.css` (forest green #1b4332 + amber #d97706, Archivo + Work
+  Sans), `js/main.js` (reused Project1's proven nav-dropdown pattern +
+  lead-tracking scaffold), `index.html`, and
+  `services/tree-removal.html`. Verified both locally via
+  `python -m http.server` — nav dropdown hover/click confirmed working
+  (same JS, same verification method as Project1's NEXUS site), layout
+  clean at both mobile and desktop widths. Git initialized, this
+  checkpoint committed.
 
 ## Next pending step
 
-Get answers to the 5 open questions above from Roman, then start with the
-homepage + `/services/tree-removal/` (the two pages every other page links
-to/from), matching the page formulas in the skill.
+Waiting on: (1) real domain once Roman confirms it, (2) real phone/email,
+(3) the specific licensing/insurance answers requested, (4) logo via
+Google AI Studio once Roman grants access. None of these block continuing
+the build — next up is the remaining 4 service pages (same formula as
+`tree-removal.html`), then the location-pages hub + 7 Phase 1 location
+pages, then the remaining core pages (about/contact/free-estimate/
+privacy/terms).
