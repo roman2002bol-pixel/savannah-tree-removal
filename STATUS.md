@@ -97,12 +97,31 @@ in the skill.
   clean at both mobile and desktop widths. Git initialized, this
   checkpoint committed.
 
+- *2026-09-07*: Sourced real (non-AI-generated) stock photography per
+  Roman's explicit instruction ("доставиш зображення на сайт. це лого не
+  стосується" — deliver real images, separate from the logo work, which
+  stays AI-generated via Google AI Studio). Searched Pexels directly
+  (`images.pexels.com/photos/{id}/...`), screened candidates by alt text
+  and visual inspection for genuine subject match — rejected several
+  off-target results (willow trees, olive branches, PNW conifer forest,
+  a competitor's branded safety vest) before landing on two:
+  - `images/hero-oak-savannah.jpg` — Pexels photo 11577011, a sprawling
+    live oak draped in Spanish moss over a garden path (matches the
+    Savannah-square look, not just generic "tree").
+  - `images/tree-removal-crew-savannah.jpg` — Pexels photo 6218318, a
+    harnessed arborist high in a tree cutting a limb with a chainsaw
+    against blue sky (genuine tree-removal action, no visible branding).
+  Both downloaded at the exact 900×675 the `.img-slot` markup expects
+  (verified via PIL), no watermarks, Pexels license (free for commercial
+  use, no attribution required). Placeholder labels disappear
+  automatically since `.img-slot` only shows them on image-load error.
+
 ## Next pending step
 
 Waiting on: (1) real domain once Roman confirms it, (2) real phone/email,
 (3) the specific licensing/insurance answers requested, (4) logo via
 Google AI Studio once Roman grants access. None of these block continuing
 the build — next up is the remaining 4 service pages (same formula as
-`tree-removal.html`), then the location-pages hub + 7 Phase 1 location
-pages, then the remaining core pages (about/contact/free-estimate/
-privacy/terms).
+`tree-removal.html`, each will need its own real stock photo sourced the
+same way), then the location-pages hub + 7 Phase 1 location pages, then
+the remaining core pages (about/contact/free-estimate/privacy/terms).
