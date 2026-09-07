@@ -5,13 +5,13 @@ services in Savannah, GA**, built on the hub-and-spoke model: one hub
 homepage, a small set of service pages, and a small, honest set of
 location pages — not a blog, not a giant directory.
 
-This is the **first site in `Microsites/`** — a folder meant to hold
-multiple independent local-SEO sites over time (see the parent folder's
-own notes once more than one exists). Sites in this folder are run on a
-different model than `Project1`'s detailing sites: those are Roman's own
-businesses; these are **local-SEO lead-gen sites** that may eventually be
-rented to, or route leads to, a real local contractor — which raises a
-sharper honesty bar on trust claims (see the `microsite-agent` skill).
+This is the **first site in `Project1/Microsites/`** — a subfolder meant
+to hold multiple independent local-SEO sites over time, kept apart from
+the detailing sites at `Project1`'s top level. Those are Roman's own
+businesses; sites under `Microsites/` are **local-SEO lead-gen sites**
+that may eventually be rented to, or route leads to, a real local
+contractor — which raises a sharper honesty bar on trust claims (see the
+`microsite-agent` skill).
 
 **Before doing any work on this site, load the `microsite-agent` skill**
 (`.claude/skills/microsite-agent/SKILL.md`) — it has the full architecture
