@@ -256,6 +256,45 @@ in the skill.
     service-page heroes) — reused `hero-oak-savannah.jpg`, no new image
     sourcing needed.
 
+- *2026-09-09*: **Real bug found and fixed — invisible ghost button on
+  every CTA band, site-wide.** Roman spotted an invisible "Call" button
+  and asked for a full bug + mobile-adaptation check. Root cause: every
+  `.cta-band` section (`background:var(--forest)`, dark green — see
+  `css/style.css`) had its ghost button hand-styled with an inline
+  `style="border-color:var(--forest);color:var(--forest)"` override —
+  the exact same color as the background it sat on, making it
+  completely invisible. `.btn-ghost`'s own default styling
+  (`color:#fff`) was already correct for this dark background; the
+  inline override was wrong from the start and had been copy-pasted
+  onto every single CTA band across the site, including into the
+  location-page generator script. Fixed by deleting the inline override
+  everywhere (17 occurrences: every service page, every location page,
+  the service-areas hub, about, faq, index, and the reference generator
+  script) — verified with a grep for the same broken pattern afterward
+  (zero remaining) plus both standing verification scripts.
+
+  Mobile-adaptation audit (DOM-based, not screenshots — the browser
+  pane's mobile-emulation screenshot capture proved unreliable this
+  session, confirmed via `get_page_text`/`scrollHeight` that pages were
+  actually fully rendered when a screenshot looked truncated): checked
+  horizontal overflow (none, on homepage/service page/location page),
+  mobile nav toggle + services accordion (both work), contact form field
+  widths (fit, no overflow), and the fixed `.mobile-action-bar`'s
+  reserved bottom padding (64px padding-bottom exactly matches the bar's
+  64px height — correctly prevents footer content from being covered).
+  No mobile-specific bugs found beyond the button-visibility one above,
+  which affected all viewports equally (not a mobile-only issue).
+
+  Also swapped the homepage's scenic oak/Spanish-moss photo (used in
+  both the `.hero` background and the regional-expertise two-col
+  section) for an actual tree-removal action shot per Roman's request
+  ("я хочу щоб зображення показували саме роботу" — show the work
+  itself, not just a landscape) — `images/tree-removal-action-savannah.jpg`
+  (Pexels #6153123: chainsaw actively cutting a large trunk, sawdust
+  flying), sourced and screened the same way as every other site photo
+  (alt-text match, zoom-check for competitor branding — clean). Deleted
+  the now-unused `hero-oak-savannah.jpg`.
+
 ## Next pending step
 
 **All 20 planned Phase-1 pages are built and correctly rebranded** to

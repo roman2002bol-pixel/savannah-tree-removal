@@ -264,7 +264,7 @@ __NEIGHBOR_CHIPS__
         </div>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="../free-estimate.html">Get a Free Estimate</a>
-          <a class="btn btn-ghost" style="border-color:var(--forest);color:var(--forest)" href="tel:{phone_tel}">Call {phone_display}</a>
+          <a class="btn btn-ghost" href="tel:{phone_tel}">Call {phone_display}</a>
         </div>
       </div>
     </div>

@@ -669,6 +669,25 @@ phone numbers, etc. become visible to anyone with the link).
   as long as it's accurate.
 - Zero broken internal links/asset references — verify with
   `check_broken_links.py`, not by eye, after every batch of changes.
+- **No inline color override that matches its own background** — a real
+  bug found on this build: every `.cta-band` (dark green background) had
+  its ghost button hand-styled with `style="border-color:var(--forest);
+  color:var(--forest)"`, the exact same color as the section it sat in,
+  making the button completely invisible. It happened because that
+  inline override was copy-pasted onto every CTA band across every page
+  (and into the location-page generator script) without re-checking
+  that the color still made sense against *that* component's actual
+  background — it only would have been correct on a light background.
+  The lesson: when a button/badge/text color is set with an inline
+  style rather than inherited from its component class, treat that as a
+  flag to double check contrast against the actual element it's sitting
+  in, especially right after copy-pasting the same snippet onto a new
+  page — a class's default styling (here, `.btn-ghost`'s `color:#fff`)
+  is usually already correct for the background its component is
+  designed for; an inline override fighting the class is more often a
+  mistake than a deliberate choice. When auditing for this class of bug,
+  grep for `style="` blocks containing `color:` and check each one
+  against the actual background of its containing section.
 
 ## Ongoing ranking-factor audits
 
