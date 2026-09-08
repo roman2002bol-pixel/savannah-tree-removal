@@ -18,12 +18,28 @@
 - **Contact email**: placeholder `info@savannahtreepros.com` — Roman is
   creating the real one now.
 - **Who fulfills leads**: Roman has a contractor/plan lined up (confirmed
-  2026-09-07). Real licensing/insurance specifics requested from him
-  (business/legal name, liability insurance + coverage amount if any,
-  bonded Y/N, certifications e.g. ISA Certified Arborist, years in
-  business) — **do not add any specific trust-claim numbers to the site
-  until those answers come back**; generic-true language only
-  ("Locally owned and operated", "Free estimates") until then.
+  2026-09-07). Licensing/experience confirmed 2026-09-08: **the
+  contractor has 10 years of experience and holds all required
+  licenses** — added to the site as "Licensed" + "Over 10 years of
+  experience" (homepage trust-strip, footer paragraph + badge on every
+  page). Still NOT confirmed, so still not on the site: business/legal
+  name, liability insurance + coverage amount, bonded Y/N, specific
+  certifications (e.g. ISA Certified Arborist) — no numbers or claims
+  beyond "licensed"/"10 years" until those come back.
+- **Logo**: real logo delivered 2026-09-08 (AI-generated per plan,
+  separate from the real-stock-photo rule) — a circular badge/seal:
+  "SAVANNAH TREE PROS" arced on top, a tree-with-visible-roots emblem in
+  the center, "TREE SERVICE & EMERGENCY REMOVAL" arced on the bottom.
+  Delivered as a potrace-traced SVG; cropped to a tight viewBox
+  (`images/logo.svg`, renamed from the original AI Studio export) and
+  wired into the header on all 6 pages as an icon next to the existing
+  "Savannah Tree Pros" wordmark text (kept the text — the badge's arced
+  caption text is illegible at header size, same reasoning as any
+  circular-seal logo). Footer keeps the old text-based `logo-mark`
+  treatment (badge is pure black, would vanish on the dark footer
+  background) — same pattern NEXUS used. Favicon left untouched (the
+  existing simple "STP"-on-green-square data-URI reads far better at
+  16-32px than this badge would).
 - **Hosting**: Cloudflare Pages (decided — this project does not use
   Vercel/GitHub Pages like the `Project1` sites). Not connected yet.
 - **Stack**: static HTML/CSS/JS, no build step. No Astro/Node. Confirmed

@@ -222,7 +222,7 @@ section{padding-block:clamp(3rem,6vw,4.5rem);}
 .img-slot.is-empty .img-slot-label{display:flex;}
 
 /* -------------------------------------------------- page hero -------- */
-.page-hero{background:var(--forest-dark); color:#fff; padding:3rem 0 3.5rem;}
+.page-hero{background-color:var(--forest-dark); background-size:cover; background-position:center; color:#fff; padding:3rem 0 3.5rem;}
 .page-hero .breadcrumbs{font-size:.85rem; color:#b9c9bf; margin-bottom:.75rem;}
 .page-hero .breadcrumbs a{color:#e7efe9;}
 .page-hero h1{color:#fff; margin-bottom:.5rem;}
