@@ -423,7 +423,57 @@ shorthand instead of layering cleanly on top of it.
 The logo is the one place AI generation is explicitly fine — this is a
 deliberate, separate decision from the real-stock-photo rule for content
 images, made explicit to the owner so it's never accidentally treated as
-a blanket "no AI" rule.
+a blanket "no AI" rule. That said, **after building one logo each way for
+this project, hand-authoring the SVG directly (no image model at all) is
+usually the better default** — it sidesteps every problem the AI-then-
+trace path caused: no huge blank-canvas viewBox to measure and crop, no
+name-baked-into-non-editable-artwork risk on a future rename, and the
+background/contrast treatment is fully under your control from the
+start. Reach for AI generation only when the owner specifically wants a
+look that's genuinely hard to hand-code (a detailed illustrative style,
+photoreal elements) — for a clean geometric mark or a circular badge
+with arced text, hand-coding is faster and more robust end to end. Both
+paths are documented below; read the hand-authored path first.
+
+### Hand-authored SVG (preferred default)
+
+1. Design directly in markup — for a circular-badge style (arced brand
+   name on top, arced tagline on bottom, an icon in the center), use
+   real `<text>` + `<textPath>` elements bound to two `<path>` arcs
+   defined in `<defs>`, not an image-generation tool. The text stays
+   genuinely editable forever this way — a future rename is a one-line
+   string replace, never a full asset regeneration.
+2. **Always add a solid background shape behind the whole mark** (e.g. a
+   white disc sized to fill inside the outermost ring) — this is what
+   lets one SVG file work correctly in both a light header and a dark
+   footer. The AI-generated logo in this project never had one, which
+   is exactly why it needed two different footer/header treatments;
+   a hand-authored one doesn't have to make that compromise.
+3. **Preview at real render sizes before finalizing — the local-file
+   browser preview sandboxes scripts (CSP blocks them), so serve the
+   file over a plain local HTTP server first**: `python -m http.server
+   {port}` from the project root, then navigate the browser to
+   `http://localhost:{port}/images/logo.svg` (or a copy of the draft
+   under a temporary filename inside the project so it's servable). Test
+   at three sizes minimum: large (to check overall composition), header
+   height (~38px — confirm whether arced/small text is legible or purely
+   decorative, matching the pairing decision below), and against both a
+   white and the site's actual dark footer background color (toggle via
+   `document.documentElement.style.background` in `javascript_exec` —
+   this works fine on an HTTP-served page even though it's blocked on a
+   local-file one).
+4. **Iterate on real, specific problems the preview shows, not
+   assumptions** — e.g. text overflowing its arc (shorten the string
+   and/or reduce font-size/increase arc radius; don't guess at numbers
+   without re-checking), an accent icon that reads as an unrecognizable
+   blob at small size (simplify or drop it — a shape has to survive
+   being simplified in your head before it survives being drawn in
+   `<path>` coordinates by hand).
+5. Once finalized, delete every draft/preview copy from the project
+   folder (they're scratch work, not project assets) and stop the local
+   HTTP server.
+
+### AI-generated + traced (when genuinely warranted)
 
 1. **Generation is manual, not automated.** Browser automation of Google
    AI Studio proved unreliable in this project (submissions returned

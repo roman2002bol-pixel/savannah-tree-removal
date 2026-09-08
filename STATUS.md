@@ -31,14 +31,17 @@
 - **Logo**: the 2026-09-08 AI-generated circular badge had "SAVANNAH TREE
   PROS" traced directly into its vector artwork (potrace output — actual
   path shapes, not editable text), so the 2026-09-09 rename made it
-  factually wrong and it was **deleted** (`images/logo.svg` removed, no
-  longer referenced anywhere). All 19 pages reverted to the original
-  text-only header treatment (`<span class="logo-mark">ST</span>` +
-  wordmark) until a new logo is generated with the correct name — same
-  AI Studio manual-prompting workflow as before (give Roman the prompt
-  in chat, he pastes it himself; browser automation of AI Studio proved
-  unreliable). Favicon monogram updated from "STP" to "STR" (still a
-  simple data-URI SVG, no dependency on the deleted badge).
+  factually wrong and it was deleted. **Replaced 2026-09-09 with a
+  hand-authored SVG** (`images/logo.svg`) — same circular-badge concept,
+  built from real `<text>`/`<textPath>` elements this time (genuinely
+  editable, not traced), with a white backing disc so it works on both
+  the white header and the dark footer. Wired into all 20 pages' header
+  AND footer as `<img class="logo-img">` next to the kept wordmark text
+  (arced badge text is decorative-only at header size — confirmed by
+  rendering it at ~38px before finalizing, same conclusion as before but
+  now checked directly rather than assumed). Favicon stayed the simple
+  "STR"-on-green-square data-URI (unrelated to this badge, by design —
+  see the skill's logo-workflow section on why favicons stay separate).
 - **Hosting**: Cloudflare Pages (decided — this project does not use
   Vercel/GitHub Pages like the `Project1` sites). Not connected yet.
 - **Stack**: static HTML/CSS/JS, no build step. No Astro/Node. Confirmed
@@ -54,8 +57,14 @@
 - [x] `/contact.html` — built (quote form wired to existing `[data-quote-form]` JS contract)
 - [x] `/free-estimate.html` — built (same form contract, dedicated page)
 - [x] `/service-areas/index.html` — built
-- [ ] `/faq/` (optional standalone — homepage already has a real FAQ block;
-      decide later if a dedicated page adds anything beyond that)
+- [x] `/faq.html` — built 2026-09-09 (Roman: "обов'язково має бути як
+      окрема вкладка" — required, not optional). Added to primary nav
+      on all 19 other pages (between About and Contact). Not a copy of
+      the homepage's FAQ block — a genuine synthesis: 10 questions
+      grouped General / Pricing &amp; Process / Local Rules, cross-linking
+      out to the relevant service and location pages (e.g. the Historic
+      District permit and Landings HOA questions link to those specific
+      location pages) rather than repeating their full answers verbatim.
 - [x] `/privacy-policy.html` — built
 - [x] `/terms.html` — built
 
@@ -242,10 +251,42 @@ in the skill.
 Savannah Tree Removal Co. Zero dead internal links, zero old-brand
 mentions (both script-verified, not eyeballed).
 
-Immediate next step: **generate a new logo** for "Savannah Tree Removal
-Co" (old one deleted, see above) — give Roman a fresh AI Studio prompt
-in chat for him to paste himself, then repeat the same crop-tight-viewBox
-+ pair-with-wordmark treatment once he delivers it.
+- *2026-09-09*: **New logo — hand-authored SVG this time, not AI-generated.**
+  Roman asked for `/faq.html` as a required standalone nav tab (was
+  marked optional before) — built it: 10 questions grouped General /
+  Pricing & Process / Local Rules, cross-linking to the relevant service
+  and location pages rather than duplicating their answers verbatim, and
+  added to primary nav on all other 19 pages (between About and
+  Contact). `check_faq_schema.py` immediately caught a real ordering
+  mismatch between the new page's visible FAQ order and its JSON-LD —
+  fixed.
+
+  Then Roman asked for a fresh logo, this time **hand-coded directly as
+  SVG** rather than generated as a raster image and traced — avoids
+  every problem the previous AI-generated logo had (huge whitespace
+  canvas, name baked into non-editable artwork, illegible-at-header-size
+  arced text with no way to fix any of it without regenerating from
+  scratch). Design: the same circular-badge concept as the original AI
+  concept Roman liked (arced brand name on top, arced tagline on bottom,
+  oak-tree-with-roots silhouette center) but built from real `<text>` +
+  `<textPath>` elements — the name is genuinely editable text now, not
+  traced paths. Iterated visually via a local `python -m http.server`
+  (browser's local-file preview sandboxes scripts, so serving it over
+  HTTP was necessary to test at multiple render sizes) — first pass had
+  the full brand name + a full tagline overflowing their arcs and an
+  unrecognizable chainsaw-accent icon; fixed by shortening both text
+  strings, correcting the arc-path geometry to true semicircles, and
+  dropping the fussy tool icon in favor of a simple two-ring (amber
+  outer, forest-green inner) treatment for the second brand color.
+  **Added a white disc behind the whole badge** (the AI-generated
+  original never had one) — this is what actually lets the same
+  `images/logo.svg` file work in both the header (white background) and
+  the footer (dark background) for the first time, wired into all 20
+  pages' header AND footer as `<img class="logo-img">` next to the kept
+  wordmark text (arced badge text is still decorative-only at header
+  size, confirmed by rendering it at ~38px before finalizing — same
+  reasoning as before, now backed by an actual small-size check rather
+  than just applying the rule from memory).
 
 Also waiting on (none of these block further iteration, just
 real-content swaps): (1) final registrar confirmation that

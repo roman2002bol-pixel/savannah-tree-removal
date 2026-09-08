@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <defs>
+    <path id="topArc" d="M 75,250 A 175,175 0 0 1 425,250" fill="none"/>
+    <path id="bottomArc" d="M 75,250 A 175,175 0 0 0 425,250" fill="none"/>
+  </defs>
+
+  <circle cx="250" cy="250" r="235" fill="#ffffff"/>
+  <circle cx="250" cy="250" r="238" fill="none" stroke="#d97706" stroke-width="6"/>
+  <circle cx="250" cy="250" r="205" fill="none" stroke="#1b4332" stroke-width="3"/>
+
+  <text font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="27" letter-spacing="2" fill="#1b4332">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">SAVANNAH TREE REMOVAL</textPath>
+  </text>
+  <text font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="19" letter-spacing="2" fill="#1b4332">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">TREE SERVICE &amp; STORM CLEANUP</textPath>
+  </text>
+
+  <!-- roots -->
+  <g stroke="#1b4332" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M250,340 L250,368"/>
+    <path d="M250,352 L214,378"/>
+    <path d="M250,352 L286,378"/>
+    <path d="M250,362 L190,372"/>
+    <path d="M250,362 L310,372"/>
+    <path d="M250,368 L226,392"/>
+    <path d="M250,368 L274,392"/>
+  </g>
+
+  <!-- trunk -->
+  <rect x="240" y="285" width="20" height="60" rx="4" fill="#1b4332"/>
+
+  <!-- canopy: layered lobes for an oak-like silhouette -->
+  <g fill="#1b4332">
+    <circle cx="250" cy="205" r="58"/>
+    <circle cx="205" cy="230" r="42"/>
+    <circle cx="295" cy="230" r="42"/>
+    <circle cx="222" cy="175" r="34"/>
+    <circle cx="278" cy="175" r="34"/>
+    <circle cx="250" cy="150" r="32"/>
+  </g>
+
+  <!-- amber accent ring around trunk base, second brand color without a fussy tool icon -->
+  <circle cx="250" cy="315" r="5" fill="#d97706"/>
+</svg>
