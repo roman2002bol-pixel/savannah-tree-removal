@@ -47,10 +47,10 @@
 ### Service pages (5 — within the 1–6 cap)
 - [x] `/services/tree-removal.html` (flagship — the broad, high-volume
       term) — built, previewed locally
-- [ ] `/services/emergency-storm-tree-removal.html`
-- [ ] `/services/large-hazardous-tree-removal.html`
-- [ ] `/services/tree-trimming-pruning.html`
-- [ ] `/services/stump-grinding-removal.html`
+- [x] `/services/emergency-storm-tree-removal.html` — built
+- [x] `/services/large-hazardous-tree-removal.html` — built
+- [x] `/services/tree-trimming-pruning.html` — built
+- [x] `/services/stump-grinding-removal.html` — built
 
 ### Location pages — Phase 1 (7, real ZIPs verified via web search 2026-09-07)
 - [ ] `/service-areas/pooler-ga/` — ZIP 31322
@@ -116,12 +116,35 @@ in the skill.
   use, no attribution required). Placeholder labels disappear
   automatically since `.img-slot` only shows them on image-load error.
 
+- *2026-09-08*: Pushed to GitHub (`roman2002bol-pixel/savannah-tree-removal`,
+  public repo) with GitHub Pages enabled for a quick shareable preview link
+  while Cloudflare Pages hosting isn't connected yet — live at
+  https://roman2002bol-pixel.github.io/savannah-tree-removal/. This is a
+  temporary preview host, not the final production home.
+- *2026-09-08*: Built the remaining 4 service pages (same formula as
+  `tree-removal.html`: situations grid, equipment/process bullets, pricing-
+  factors paragraph, FAQ with matching JSON-LD, area-chip cross-links,
+  shared footer): `emergency-storm-tree-removal.html`,
+  `large-hazardous-tree-removal.html`, `tree-trimming-pruning.html`,
+  `stump-grinding-removal.html`. All 5 service pages now built — cap
+  reached. Sourced one real Pexels photo per page the same way as the
+  first two (search → alt-text screen → visual check for watermarks/
+  competitor branding) — rejected two otherwise-good candidates
+  (bucket-truck worker, pole-saw worker) after zooming in and finding a
+  legible third-party company logo on their clothing. Final picks:
+  `storm-tree-removal-savannah.jpg`, `large-tree-removal-savannah.jpg`,
+  `tree-trimming-savannah.jpg`, `stump-grinding-savannah.jpg`, all 900×675.
+
 ## Next pending step
 
-Waiting on: (1) real domain once Roman confirms it, (2) real phone/email,
-(3) the specific licensing/insurance answers requested, (4) logo via
-Google AI Studio once Roman grants access. None of these block continuing
-the build — next up is the remaining 4 service pages (same formula as
-`tree-removal.html`, each will need its own real stock photo sourced the
-same way), then the location-pages hub + 7 Phase 1 location pages, then
-the remaining core pages (about/contact/free-estimate/privacy/terms).
+All 5 planned service pages are now built. Waiting on: (1) real domain
+once Roman confirms it, (2) real phone/email, (3) the specific licensing/
+insurance answers requested, (4) logo via Google AI Studio once Roman
+grants access. None of these block continuing the build — next up is the
+`/service-areas/` hub page + the 7 Phase 1 location pages (each needs
+real local detail, not a templated city-name swap — see the skill's
+location-page formula), then the remaining core pages (about/contact/
+free-estimate/privacy/terms). Every service page already links out to
+`service-areas/*.html` files that don't exist yet (same pattern
+`tree-removal.html` used from the start) — those links will 404 until
+the location pages are built.
