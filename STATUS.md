@@ -295,6 +295,32 @@ in the skill.
   (alt-text match, zoom-check for competitor branding — clean). Deleted
   the now-unused `hero-oak-savannah.jpg`.
 
+- *2026-09-09*: Roman asked for this photo-matches-the-action upgrade to
+  become a standing rule, not a one-off ("запишеш собі за правило") —
+  added to `SKILL.md`'s image sourcing workflow. Applied it immediately
+  to the two other service-page photos that were on-topic but not
+  action-specific:
+  - `large-hazardous-tree-removal.html`: swapped the static "big oak near
+    a house" shot for a harnessed arborist rigged high in a tree with a
+    chainsaw (Pexels #34674271) — now actually shows rigging equipment,
+    matching the page's own "controlled, piece-by-piece takedown" copy.
+  - `emergency-storm-tree-removal.html`: swapped the "fallen tree, no one
+    in frame" shot for a worker responding to/inspecting storm damage on
+    a residential street (Pexels #30387775) — now shows response, not
+    just the aftermath.
+  - `stump-grinding-removal.html`: kept as-is after a third search
+    attempt found no genuine stump-grinder-in-action photo on Pexels —
+    the existing "stump in a yard" photo stays as the honest choice per
+    the new rule's own stated exception (don't force a mismatched action
+    shot from an unrelated trade just to have one).
+  Same filenames reused for the two swaps (no HTML path changes needed),
+  alt text updated to match the new content on both. Location pages,
+  about/contact/faq/legal pages intentionally still have no photos — see
+  the earlier, separate honesty reasoning (a generic stock photo can't
+  honestly "represent" a specific real neighborhood) — this rule is about
+  matching action to topic on pages that already have photo slots, not
+  a mandate to add photos everywhere.
+
 ## Next pending step
 
 **All 20 planned Phase-1 pages are built and correctly rebranded** to

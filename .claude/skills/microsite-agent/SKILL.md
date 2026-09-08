@@ -350,6 +350,31 @@ generated photos are increasingly flagged/de-weighted by Google's image
 understanding; a logo is a graphic mark, not a photo, and isn't subject
 to the same signal).**
 
+**Standing rule: match the photo to the page's specific action, not just
+its general topic — "on-topic" and "thematically precise" are not the
+same bar.** A photo of a peaceful oak tree is on-topic for a tree-service
+site; it is not a good photo for a page whose H1 is a specific service
+like "Large & Hazardous Tree Removal," because it shows neither
+largeness/hazard nor removal-in-progress. Prefer a photo that shows the
+specific thing that page is about happening: for a removal page, someone
+actually cutting/rigging/taking a tree down, not just a tree standing
+there; for a storm/emergency page, a worker responding to or clearing
+storm damage, not just a fallen tree with no one in frame; for a
+trimming page, a pole saw or pruning shears actually mid-cut. This
+applies retroactively too — re-audit a page's existing photo whenever
+you're back in that file for another reason, the same way the homepage
+hero got upgraded from a scenic oak/Spanish-moss shot to an actual
+chainsaw-cutting-a-trunk action shot once that mismatch was pointed out,
+and two more service pages (large/hazardous, storm/emergency) got the
+same upgrade the same day. The one honest exception: if no genuine,
+clean, on-topic action shot exists for a given specific service after a
+real search attempt (tried for stump grinding three separate times, no
+usable stump-grinder-in-action photo existed on Pexels), keep the best
+available honest photo of the *situation* that service addresses (a
+stump in a yard) rather than forcing a mismatched action shot from an
+unrelated trade (a metalworking grinder, an industrial forestry
+harvester) just to have "an action shot."
+
 Step by step (uses the in-app Browser, not WebSearch — WebSearch doesn't
 return usable direct image URLs for this):
 1. **Navigate to a Pexels search URL directly**:
