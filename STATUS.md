@@ -321,6 +321,37 @@ in the skill.
   matching action to topic on pages that already have photo slots, not
   a mandate to add photos everywhere.
 
+- *2026-09-09*: **Real, site-wide mobile bug found by Roman that my
+  earlier "mobile audit" missed**: the hamburger nav-toggle button was
+  invisible on every page at every mobile width — `.nav-toggle` was
+  `display:none` at baseline, and the mobile media query correctly
+  showed the close button, the slide-out panel, and the CTA buttons but
+  never included a rule to un-hide the *open* button. Every mobile
+  visitor had zero way to reach About, FAQ, or Contact (footer doesn't
+  link to those either). My earlier check only called
+  `document.querySelector('[data-nav-toggle]').click()` and watched the
+  class toggle — that tests the JS handler, not whether a real user
+  could ever find/tap an invisible button. Fixed:
+  `css/style.css`'s `@media (max-width:959px)` block now includes
+  `.nav-toggle{display:flex;}`. Also shrank the utility bar's font-size
+  on real narrow phones (`@media (max-width:600px)`, `.72rem` down from
+  the sitewide `.85rem`, plus tighter padding) — the long announcement
+  sentence was wrapping to a dominant 2-line block on 375px screens.
+  Verified this time by checking actual computed visibility
+  (`getBoundingClientRect`/`display`) of the toggle button, not just its
+  click handler, and by dispatching a real `MouseEvent` (not calling the
+  handler function directly) to confirm both open and close correctly
+  toggle `is-open`/overlay/body-scroll-lock state. The panel's CSS
+  slide-in transition itself couldn't be visually confirmed in this
+  session's browser-pane tooling (its animation clock was frozen — a
+  tooling limitation, confirmed via `getAnimations()[].currentTime`
+  stuck at 0 despite real elapsed time — not a site bug; the underlying
+  CSS rule, specificity, and class application were all independently
+  verified correct). Documented both the missed-bug pattern and the
+  testing-methodology fix in `SKILL.md`'s new "Mobile QA" section per
+  Roman's explicit request to make this a standing checklist for the
+  next site's audit, not a one-off fix.
+
 ## Next pending step
 
 **All 20 planned Phase-1 pages are built and correctly rebranded** to

@@ -124,9 +124,14 @@ img{max-width:100%; display:block;}
   .nav-group.is-open .nav-sub{display:block;}
   .nav-cta{display:flex; flex-direction:column; gap:.6rem; margin-top:1.25rem;}
   .nav-actions .btn-outline.btn-sm{display:none;}
+  .nav-toggle{display:flex;}
 }
 @media (min-width:960px){
   .nav-toggle,.nav-close{display:none;}
+}
+@media (max-width:600px){
+  .utility-bar{font-size:.7rem;}
+  .utility-bar .container{padding-block:.35rem;}
 }
 
 /* -------------------------------------------------- hero ----------- */

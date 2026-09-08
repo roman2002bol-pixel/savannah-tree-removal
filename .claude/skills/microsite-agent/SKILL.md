@@ -714,6 +714,85 @@ phone numbers, etc. become visible to anyone with the link).
   grep for `style="` blocks containing `color:` and check each one
   against the actual background of its containing section.
 
+## Mobile QA — a real bug this project shipped, and the testing mistake that missed it
+
+A prior "mobile audit" on this project concluded the mobile nav worked
+by running `document.querySelector('[data-nav-toggle]').click()` in the
+browser and observing the panel's `is-open` class get added. **That
+tested the JS handler's logic, not whether the button was actually
+visible/tappable by a real user** — and it wasn't: `.nav-toggle` had
+`display:none` as its unconditional base style, and the mobile media
+query (which correctly showed the close button, the slide-out panel,
+and the mobile CTA buttons) never included a rule to make the *open*
+button visible again. Every mobile visitor on every page had a
+completely inaccessible primary nav — no way to reach About, FAQ, or
+Contact at all, since the footer doesn't link to those either. Roman
+caught this by looking at an actual screenshot, not by anything an
+automated check had verified.
+
+**The concrete lesson: calling `.click()` or dispatching a synthetic
+click on an element proves its event handler *logic* works. It proves
+nothing about whether a real user could ever find or tap that element.**
+Before trusting any interactive-element test, separately check the
+trigger element's actual visibility:
+```js
+const el = document.querySelector('[data-nav-toggle]');
+const rect = el.getBoundingClientRect();
+const style = getComputedStyle(el);
+({ visible: rect.width > 0 && rect.height > 0 && style.display !== 'none' && style.visibility !== 'hidden' })
+```
+Do this for every interactive control a mobile-QA pass touches (nav
+toggle, nav close, accordion labels, form submit buttons) — not just
+the ones that seem likely to have a display:none problem. The general
+pattern to grep for when auditing a new site: any selector styled
+`display:none` at baseline, check that *every* breakpoint where it's
+supposed to reappear actually contains a rule that un-hides it — it's
+easy to correctly write the close button, the overlay, and the slide-out
+panel for a mobile nav while forgetting the one button that opens it in
+the first place, especially when the open button's default state is
+"hidden until a media query says otherwise" and that media query rule
+never got written.
+
+**Second lesson from the same session: don't mistake a frozen test
+environment for a real animation bug.** After fixing the above, checking
+whether the panel's CSS transition (`transform: translateX(...)`)
+actually animated open showed the computed transform stuck at its
+closed-state value even ~400ms after dispatching the click — looking
+exactly like a second real bug (class toggles, but the visual slide-in
+doesn't happen). Before concluding that, check `el.getAnimations()`:
+```js
+document.querySelector('[data-nav]').getAnimations()
+  .map(a => ({ playState: a.playState, currentTime: a.currentTime }))
+```
+If `currentTime` is stuck at `0` (or otherwise not advancing) despite
+real wall-clock time passing, the animation timeline itself is frozen —
+almost always because the browser-pane tool isn't actively compositing
+the tab to a real display surface in that moment (a known limitation,
+distinct from `document.hidden`, which can still report `false`). Cross-
+check by confirming the *static* properties from the same CSS rule block
+did apply correctly (position, width, display, the class name itself) —
+if those are all correct and only the transitioning property is stuck,
+it's the test tool's compositor, not the site. Don't report this as a
+bug; don't "fix" CSS that isn't broken chasing it.
+
+**Mobile QA checklist to actually run (not just assert), every time:**
+- Every interactive trigger element (nav toggle, nav close, accordion
+  labels): check real visibility (`getBoundingClientRect` + computed
+  `display`/`visibility`), not just that dispatching a click updates
+  some class.
+- Horizontal overflow: `document.documentElement.scrollWidth >
+  window.innerWidth` on at least the homepage, one service page, one
+  location page.
+- Any long text string in a persistent/sticky element (a utility bar,
+  an announcement banner) at the narrowest realistic width (375px, not
+  just "below 960px") — long sentences that fit fine at 700px can wrap
+  to two or three dominant lines at 375px and need their own, tighter
+  breakpoint, not just inheriting the same font-size as the tablet range.
+- Form field widths on the actual mobile viewport, not just at desktop
+  width scaled down.
+- The fixed mobile action bar's reserved bottom padding still matches
+  its rendered height (they can drift apart if either changes later).
+
 ## Ongoing ranking-factor audits
 
 `references/whitespark-ranking-factors-checklist.md` holds the full,
