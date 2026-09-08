@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 585 80" role="img" aria-label="Savannah Tree Removal Co">
+  <!-- icon: shield + tree, single color, transparent background -->
+  <g fill="none" stroke="#1b4332" stroke-width="3.5" stroke-linejoin="round">
+    <path d="M40,6 L68,17 L68,40 C68,58 56,70 40,75 C24,70 12,58 12,40 L12,17 Z"/>
+  </g>
+  <g fill="#1b4332">
+    <rect x="36" y="46" width="8" height="18" rx="2"/>
+    <circle cx="40" cy="34" r="16"/>
+    <circle cx="27" cy="42" r="11"/>
+    <circle cx="53" cy="42" r="11"/>
+  </g>
+
+  <!-- wordmark: two-tone brand name -->
+  <text x="94" y="42" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="32">
+    <tspan fill="#1b4332">Savannah</tspan><tspan fill="#d97706"> Tree Removal Co</tspan>
+  </text>
+
+  <!-- subtext: honest, matches the site's own wording (no unconfirmed "24/7" claim) -->
+  <text x="95" y="65" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="16" letter-spacing="0.5" fill="#5b6b63">
+    STORM &amp; EMERGENCY RESPONSE
+  </text>
+</svg>

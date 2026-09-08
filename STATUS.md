@@ -31,15 +31,26 @@
 - **Logo**: the 2026-09-08 AI-generated circular badge had "SAVANNAH TREE
   PROS" traced directly into its vector artwork (potrace output — actual
   path shapes, not editable text), so the 2026-09-09 rename made it
-  factually wrong and it was deleted. **Replaced 2026-09-09 with a
-  hand-authored SVG** (`images/logo.svg`) — same circular-badge concept,
-  built from real `<text>`/`<textPath>` elements this time (genuinely
-  editable, not traced), with a white backing disc so it works on both
-  the white header and the dark footer. Wired into all 20 pages' header
-  AND footer as `<img class="logo-img">` next to the kept wordmark text
-  (arced badge text is decorative-only at header size — confirmed by
-  rendering it at ~38px before finalizing, same conclusion as before but
-  now checked directly rather than assumed). Favicon stayed the simple
+  factually wrong and it was deleted. Replaced same-day with a
+  hand-authored SVG, then **replaced again 2026-09-09 (later) with a
+  second AI-generated badge** Roman regenerated himself with the correct
+  name — same circular-badge concept, real tree/roots + crane/chainsaw
+  illustration, "SAVANNAH TREE REMOVAL CO" / "TREE SERVICE & EMERGENCY
+  REMOVAL" arced text. This export was a proper vectorization (gradients,
+  ~130 paths) rather than a flat potrace trace, and its content already
+  filled almost the entire 2048×1989 canvas (no huge blank-margin issue
+  this time) — but it had an opaque white full-canvas background
+  rectangle, which would have shown as an ugly white square on the dark
+  footer. Fixed by deleting that one rect and replacing it with a white
+  disc sized to just the circular badge, then tightening the viewBox to
+  the actual content bounds (`"40 19 1972 1941"`) — now `images/logo.svg`
+  (same filename, so no HTML changes were needed anywhere — every page
+  already pointed at this path). Wired into all 20 pages' header AND
+  footer as `<img class="logo-img">` next to the kept wordmark text
+  (arced badge text is decorative-only at header size, confirmed by
+  rendering at ~38px — same conclusion as every circular-badge logo so
+  far, now checked directly each time rather than assumed). Favicon
+  stayed the simple
   "STR"-on-green-square data-URI (unrelated to this badge, by design —
   see the skill's logo-workflow section on why favicons stay separate).
 - **Hosting**: Cloudflare Pages (decided — this project does not use

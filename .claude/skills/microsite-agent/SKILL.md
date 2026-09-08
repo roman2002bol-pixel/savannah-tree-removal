@@ -516,6 +516,20 @@ paths are documented below; read the hand-authored path first.
    case, keep the pre-existing text-based `logo-mark` treatment in the
    footer and only use the image in the header — this is the same
    pattern NEXUS already used, not a new one invented for this site.
+   **Or fix it at the source instead**: some AI-vectorized exports (as
+   opposed to a flat potrace trace) include a fully opaque background
+   layer — a literal full-canvas rectangle path (e.g. `M 0 0 L 2048 0 L
+   2048 1989 L 0 1989 L 0 0 z`) filled white, sitting behind the actual
+   badge. That's what breaks footer use, not the badge itself. Grep the
+   raw SVG for a suspiciously simple 4-corner rectangle path matching
+   the full viewBox dimensions, delete just that one path, then add a
+   properly-sized white circle (or shape matching the badge's own
+   outline) behind the remaining content instead — this makes the badge
+   itself transparent outside its border and the *same file* works in
+   both the header and the footer, no dual-treatment workaround needed.
+   Re-measure `getBBox()` after removing the rect, since it was very
+   likely inflating the measured bounding box to the full canvas size
+   and hiding how tightly the actual content was already cropped.
 5. **If the brand name ever changes after a logo exists, check whether
    the name is baked into the artwork itself** (true for anything
    AI-generated then rasterized/traced — the letters are vector path
