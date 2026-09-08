@@ -51,14 +51,14 @@
 
 ### Core pages (8)
 - [x] `/` (Home / Hub) — built, previewed locally, nav dropdown verified
-- [ ] `/about/`
-- [ ] `/contact/`
-- [ ] `/free-estimate/`
-- [ ] `/service-areas/` (location hub — links to all Phase 1 location pages)
+- [x] `/about.html` — built
+- [x] `/contact.html` — built (quote form wired to existing `[data-quote-form]` JS contract)
+- [x] `/free-estimate.html` — built (same form contract, dedicated page)
+- [x] `/service-areas/index.html` — built
 - [ ] `/faq/` (optional standalone — homepage already has a real FAQ block;
       decide later if a dedicated page adds anything beyond that)
-- [ ] `/privacy-policy/`
-- [ ] `/terms/`
+- [x] `/privacy-policy.html` — built
+- [x] `/terms.html` — built
 
 ### Service pages (5 — within the 1–6 cap)
 - [x] `/services/tree-removal.html` (flagship — the broad, high-volume
@@ -69,13 +69,15 @@
 - [x] `/services/stump-grinding-removal.html` — built
 
 ### Location pages — Phase 1 (7, real ZIPs verified via web search 2026-09-07)
-- [ ] `/service-areas/pooler-ga/` — ZIP 31322
-- [ ] `/service-areas/richmond-hill-ga/` — ZIP 31324
-- [ ] `/service-areas/wilmington-island/` — ZIP 31410
-- [ ] `/service-areas/skidaway-island-the-landings/` — ZIP 31411
-- [ ] `/service-areas/georgetown-savannah/` — ZIP 31419
-- [ ] `/service-areas/isle-of-hope/` — ZIP 31406
-- [ ] `/service-areas/historic-district-downtown-savannah/` — ZIP 31401
+All 7 built 2026-09-08, each with genuinely researched local detail (see
+"Recent changes" below for sources) — not a templated city-name swap.
+- [x] `/service-areas/pooler-ga.html` — ZIP 31322
+- [x] `/service-areas/richmond-hill-ga.html` — ZIP 31324 (Bryan County, not Chatham — stated accurately on the page)
+- [x] `/service-areas/wilmington-island.html` — ZIP 31410
+- [x] `/service-areas/skidaway-island-the-landings.html` — ZIP 31411
+- [x] `/service-areas/georgetown-savannah.html` — ZIP 31419
+- [x] `/service-areas/isle-of-hope.html` — ZIP 31406
+- [x] `/service-areas/historic-district-downtown-savannah.html` — ZIP 31401
 
 ### Location pages — Phase 2 (do NOT build yet)
 Add remaining smaller Savannah-metro suburbs once Phase 1 is indexed and
@@ -151,16 +153,71 @@ in the skill.
   `storm-tree-removal-savannah.jpg`, `large-tree-removal-savannah.jpg`,
   `tree-trimming-savannah.jpg`, `stump-grinding-savannah.jpg`, all 900×675.
 
+- *2026-09-08*: Built all remaining planned pages — Roman asked for every
+  page to be genuinely tied to its specific district, not templated
+  ("щоб кожна сторінка була дуже добре підв'язана під кожен район"), in
+  response to a pasted video about a different (WordPress/SFTP-based)
+  microsite build workflow. Kept our own static-HTML/git/STATUS.md
+  approach (already equivalent to that video's "LLM wiki" idea) — no
+  architecture change — but adopted its one directly-relevant lesson:
+  research each location for real, citable local detail before writing
+  the page, instead of swapping the city name in a template. WebSearched
+  each of the 7 Phase-1 areas and found genuinely distinguishing facts:
+  - **Pooler**: ~34K population 2026, up ~33% since the 2020 census —
+    new-construction subdivisions next to older wooded lots.
+  - **Richmond Hill**: Henry & Clara Ford's winter home 1925–1947 (town
+    renamed from Ways Station in his honor, 1941) — is in **Bryan
+    County**, not Chatham, stated accurately on its page.
+  - **Wilmington Island**: barrier island, mature live oaks over
+    midcentury homes, tidal marsh/creek frontage (incl. Whitemarsh,
+    Talahi).
+  - **Skidaway Island/The Landings**: real, verified HOA rule — The
+    Landings Association requires Public Works evaluation (Tue/Fri) for
+    any tree ≥20" circumference on developed property, plus
+    architectural review. [landings.org](https://landings.org/news/2020/06/03/residential-tree-removal-policy-developed-property)
+  - **Georgetown**: 1970s master-planned Southside community, ~14 mi from
+    downtown, near the Little Ogeechee River.
+  - **Isle of Hope**: 19th-century Savannah-elite summer retreat,
+    century-old live oaks on Bluff Drive, National Register district.
+  - **Historic District**: real, verified City rule — Savannah's
+    Landscape & Tree Protection Ordinance protects live oaks citywide;
+    removing one (even on private property) generally needs a Tree
+    Removal Permit backed by a certified-arborist assessment, plus a
+    replacement planting; street/square trees are city property and
+    can't be removed privately at all. [savannahga.gov](https://www.savannahga.gov/763/Tree-Ordinance-Administration)
+
+  Built via a one-off Python generator script (`gen_locations.py`, kept
+  in the session scratchpad, not committed — the skill explicitly
+  sanctions this for repetitive location pages) reading this per-location
+  data, so structure stayed consistent while content stayed genuinely
+  distinct. Verified after: zero broken internal links/asset refs across
+  all 19 HTML files, and FAQ visible text matches FAQPage JSON-LD exactly
+  on all 7 location pages (both checked by script, not by eye).
+
+  Also built the `/service-areas/` hub and the 5 remaining core pages
+  (about/contact/free-estimate/privacy-policy/terms). Contact and
+  Free Estimate both use a real form wired to `main.js`'s existing
+  `[data-quote-form]`/`[data-form-status]` contract (mailto fallback,
+  no backend yet). About page repeats only the already-confirmed
+  licensed/10-years-experience claim — no new trust claims invented.
+
 ## Next pending step
 
-All 5 planned service pages are now built. Waiting on: (1) real domain
-once Roman confirms it, (2) real phone/email, (3) the specific licensing/
-insurance answers requested, (4) logo via Google AI Studio once Roman
-grants access. None of these block continuing the build — next up is the
-`/service-areas/` hub page + the 7 Phase 1 location pages (each needs
-real local detail, not a templated city-name swap — see the skill's
-location-page formula), then the remaining core pages (about/contact/
-free-estimate/privacy/terms). Every service page already links out to
-`service-areas/*.html` files that don't exist yet (same pattern
-`tree-removal.html` used from the start) — those links will 404 until
-the location pages are built.
+**All 20 planned Phase-1 pages are now built** — homepage, 5 service
+pages, service-areas hub + 7 location pages, and about/contact/
+free-estimate/privacy-policy/terms. Zero dead internal links.
+
+Waiting on (none of these block further iteration, just real-content
+swaps): (1) real domain once Roman confirms it, (2) real phone/email,
+(3) remaining licensing/insurance specifics beyond "licensed, 10 years
+experience" (business/legal name, insurance coverage, bonded Y/N,
+certifications), (4) logo — done, see Site identity above.
+
+Good next steps once those land, or if continuing without them:
+commit + push + verify live (already the established workflow), then
+re-run the Whitespark on-page audit
+(`references/whitespark-ranking-factors-checklist.md`) now that
+internal linking is fully closed up (factor #16 was the main open gap
+last audit). AI-visibility optimization (schema/llms.txt pass) is the
+other thing mentioned as a next step in the pasted video content and
+still genuinely useful to do, independent of that source.
