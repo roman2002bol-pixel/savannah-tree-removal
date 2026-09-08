@@ -2,21 +2,23 @@
 
 ## Site identity
 
-- **Brand name**: **Savannah Tree Pros** (decided 2026-09-07 — keeps
-  "Savannah"+"Tree" for direct query match, "Pros" is a real, common
-  pattern for trade businesses, not a stuffed exact-match domain).
+- **Brand name**: **Savannah Tree Removal Co** (renamed 2026-09-09 — see
+  "Naming correction" below. Domain: `savannahtreeremovalco.com`).
+  ~~Savannah Tree Pros~~ (2026-09-07 choice, retired) — do not reuse.
 - **Niche**: Tree Removal (with Emergency/Storm and Large/Hazardous as
   service pages within it, not standalone niches — see
   `.claude/skills/microsite-agent/references/niche-research.md`)
 - **Market**: Savannah, GA (Chatham County metro)
-- **Domain**: placeholder `savannahtreepros.com` used throughout the code
-  (canonical tags, JSON-LD, footer, meta) — Roman is sourcing/confirming
-  the real one ("не проблема"), swap in one pass once confirmed, same
-  process used for NEXUS's domain.
+- **Domain**: placeholder `savannahtreeremovalco.com` used throughout the
+  code (canonical tags, JSON-LD, footer, meta) — DNS doesn't resolve as
+  of 2026-09-09 (good sign), but **do a final registrar check
+  (Namecheap/GoDaddy) before actually buying it** — a non-resolving
+  domain isn't proof it's unregistered. Once Roman confirms the real
+  domain, swap in one pass, same process used for NEXUS's domain.
 - **Phone**: placeholder `(912) 555-0100` / `+19125550100` — Roman will
   buy a real 912-area-code number, swap in one pass once he has it.
-- **Contact email**: placeholder `info@savannahtreepros.com` — Roman is
-  creating the real one now.
+- **Contact email**: placeholder `info@savannahtreeremovalco.com` —
+  Roman is creating the real one now.
 - **Who fulfills leads**: Roman has a contractor/plan lined up (confirmed
   2026-09-07). Licensing/experience confirmed 2026-09-08: **the
   contractor has 10 years of experience and holds all required
@@ -26,20 +28,17 @@
   name, liability insurance + coverage amount, bonded Y/N, specific
   certifications (e.g. ISA Certified Arborist) — no numbers or claims
   beyond "licensed"/"10 years" until those come back.
-- **Logo**: real logo delivered 2026-09-08 (AI-generated per plan,
-  separate from the real-stock-photo rule) — a circular badge/seal:
-  "SAVANNAH TREE PROS" arced on top, a tree-with-visible-roots emblem in
-  the center, "TREE SERVICE & EMERGENCY REMOVAL" arced on the bottom.
-  Delivered as a potrace-traced SVG; cropped to a tight viewBox
-  (`images/logo.svg`, renamed from the original AI Studio export) and
-  wired into the header on all 6 pages as an icon next to the existing
-  "Savannah Tree Pros" wordmark text (kept the text — the badge's arced
-  caption text is illegible at header size, same reasoning as any
-  circular-seal logo). Footer keeps the old text-based `logo-mark`
-  treatment (badge is pure black, would vanish on the dark footer
-  background) — same pattern NEXUS used. Favicon left untouched (the
-  existing simple "STP"-on-green-square data-URI reads far better at
-  16-32px than this badge would).
+- **Logo**: the 2026-09-08 AI-generated circular badge had "SAVANNAH TREE
+  PROS" traced directly into its vector artwork (potrace output — actual
+  path shapes, not editable text), so the 2026-09-09 rename made it
+  factually wrong and it was **deleted** (`images/logo.svg` removed, no
+  longer referenced anywhere). All 19 pages reverted to the original
+  text-only header treatment (`<span class="logo-mark">ST</span>` +
+  wordmark) until a new logo is generated with the correct name — same
+  AI Studio manual-prompting workflow as before (give Roman the prompt
+  in chat, he pastes it himself; browser automation of AI Studio proved
+  unreliable). Favicon monogram updated from "STP" to "STR" (still a
+  simple data-URI SVG, no dependency on the deleted badge).
 - **Hosting**: Cloudflare Pages (decided — this project does not use
   Vercel/GitHub Pages like the `Project1` sites). Not connected yet.
 - **Stack**: static HTML/CSS/JS, no build step. No Astro/Node. Confirmed
@@ -201,17 +200,59 @@ in the skill.
   no backend yet). About page repeats only the already-confirmed
   licensed/10-years-experience claim — no new trust claims invented.
 
+- *2026-09-09*: **Naming correction — "Savannah Tree Pros" retired.**
+  Roman asked whether the name was good SEO-wise and pasted his own
+  research claiming it collided with live competitors. Rather than trust
+  the paste, verified independently: WebFetched `savannahtreepros.com`
+  and `savannahgatreepros.com` directly — both are live, active
+  lead-gen tree-service sites with near-identical positioning (same
+  services, same service area, even a tree-ordinance mention). **This
+  was my own mistake from 2026-09-07** — I picked the name without
+  checking for an existing domain/business collision first. Fixed the
+  process going forward (see the new "Brand name & domain vetting"
+  section in `SKILL.md`) and fixed this site:
+  - WebFetched 4 candidate replacement domains — none resolved via DNS
+    (suggestive of availability, not proof; flagged that a final
+    registrar check is still needed before purchase).
+  - WebSearched each candidate's exact name for a real-business/GBP
+    collision — none had an exact match; "Savannah Tree Removal Co" has
+    a *soft* collision with an existing "Savannah Tree Co"
+    (savannahtreeco.com) — disclosed this tradeoff to Roman explicitly
+    rather than picking silently.
+  - Gave Roman a real choice (not another unilateral pick) between 4
+    verified-clean options; he chose **Savannah Tree Removal Co**.
+  - Executed the full rebrand via a Python script across all 19 HTML
+    files: title/meta/OG tags, canonical URLs, JSON-LD `name` fields,
+    header/footer wordmark, copyright line, contact email, favicon
+    monogram (STP → STR). Verified after: zero remaining
+    "Savannah Tree Pros"/"savannahtreepros"/"STP" mentions anywhere
+    (grep), zero broken internal links/asset refs (script-checked).
+  - The AI-generated logo had the old name traced into its actual vector
+    artwork (not editable text) — deleted it and reverted every header
+    to the plain text wordmark until a new logo gets generated with the
+    correct name.
+  - Also added a photo background to the homepage `.hero` (Roman's
+    request, same gradient-overlay treatment already used on the 5
+    service-page heroes) — reused `hero-oak-savannah.jpg`, no new image
+    sourcing needed.
+
 ## Next pending step
 
-**All 20 planned Phase-1 pages are now built** — homepage, 5 service
-pages, service-areas hub + 7 location pages, and about/contact/
-free-estimate/privacy-policy/terms. Zero dead internal links.
+**All 20 planned Phase-1 pages are built and correctly rebranded** to
+Savannah Tree Removal Co. Zero dead internal links, zero old-brand
+mentions (both script-verified, not eyeballed).
 
-Waiting on (none of these block further iteration, just real-content
-swaps): (1) real domain once Roman confirms it, (2) real phone/email,
-(3) remaining licensing/insurance specifics beyond "licensed, 10 years
-experience" (business/legal name, insurance coverage, bonded Y/N,
-certifications), (4) logo — done, see Site identity above.
+Immediate next step: **generate a new logo** for "Savannah Tree Removal
+Co" (old one deleted, see above) — give Roman a fresh AI Studio prompt
+in chat for him to paste himself, then repeat the same crop-tight-viewBox
++ pair-with-wordmark treatment once he delivers it.
+
+Also waiting on (none of these block further iteration, just
+real-content swaps): (1) final registrar confirmation that
+`savannahtreeremovalco.com` is actually available, then purchase, (2)
+real phone/email, (3) remaining licensing/insurance specifics beyond
+"licensed, 10 years experience" (business/legal name, insurance
+coverage, bonded Y/N, certifications).
 
 Good next steps once those land, or if continuing without them:
 commit + push + verify live (already the established workflow), then
@@ -219,5 +260,5 @@ re-run the Whitespark on-page audit
 (`references/whitespark-ranking-factors-checklist.md`) now that
 internal linking is fully closed up (factor #16 was the main open gap
 last audit). AI-visibility optimization (schema/llms.txt pass) is the
-other thing mentioned as a next step in the pasted video content and
-still genuinely useful to do, independent of that source.
+other thing mentioned as a next step in pasted video content and still
+genuinely useful to do, independent of that source.
