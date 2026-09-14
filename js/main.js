@@ -1,4 +1,4 @@
-/* Savannah Tree Pros – site behavior. Vanilla JS, no dependencies. */
+/* Savannah Tree Removal Co – site behavior. Vanilla JS, no dependencies. */
 (function () {
   "use strict";
 
@@ -80,9 +80,9 @@
         var data = new FormData(form);
         var lines = [];
         data.forEach(function (value, key) { lines.push(key + ": " + value); });
-        var subject = encodeURIComponent("New estimate request – Savannah Tree Pros");
+        var subject = encodeURIComponent("New estimate request – Savannah Tree Removal Co");
         var body = encodeURIComponent(lines.join("\n"));
-        window.location.href = "mailto:info@savannahtreepros.com?subject=" + subject + "&body=" + body;
+        window.location.href = "mailto:info@savannahtreeremovalco.com?subject=" + subject + "&body=" + body;
         if (status) {
           status.textContent = "Opening your email app to send the request – or just call/text us instead.";
           status.className = "form-status ok is-visible";
