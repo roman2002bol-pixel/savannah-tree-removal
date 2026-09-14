@@ -250,6 +250,120 @@ pass, not just the first:
    CSS/inline-style pattern in "Image sourcing workflow" below. Don't
    source a second image just for the hero; reuse the page's existing one.
 
+## Homepage engagement pattern: a "Check Your Area" hero CTA
+
+Add a third hero button (alongside call and free-estimate) that links to
+the Service Areas hub — e.g. `Check Your Area` → `service-areas/index.html`
+(always the explicit `index.html`, matching this project's own internal-
+link convention — a bare directory link like `service-areas/` will fail
+`check_broken_links.py`, which resolves paths literally). This isn't
+decorative: a visitor who clicks through to the areas hub goes deeper into
+the site and spends longer on it than one who bounces after reading the
+hero, and that's a genuine on-page-behavior signal (dwell time, pages per
+session) separate from anything schema- or backlink-related. Cheap to add,
+worth doing on every hub-and-spoke build's homepage by default.
+
+## Outbound authority links — cite the actual source, not just the fact
+
+Every location page already has to trace its claims back to real research
+(see the workflow below) — the missing last step is **linking the claim to
+its real source** directly in the page copy, not just having done the
+research privately. Two tiers:
+
+- **A specific regulatory/HOA/historical claim** → link straight to the
+  actual governing body's own page (a city ordinance page, an HOA
+  association's own policy announcement) — this is the highest-value case,
+  since it's the exact primary source the claim came from. Example from
+  this build: the Historic District page's tree-ordinance sentence links to
+  `savannahga.gov`'s own Tree Ordinance Administration page; the Skidaway
+  Island/Landings page's HOA-policy sentence links to `landings.org`'s own
+  published policy announcement.
+- **General place history/geography** → link the place name to its
+  Wikipedia article (verify the exact article exists and title-cases/
+  underscores correctly before using the URL — don't guess the slug).
+- Mechanically: link the location/claim's first natural mention in the
+  local-facts paragraph, `target="_blank" rel="noopener"` (visitor leaves
+  the page, external site, standard treatment), and re-run
+  `check_broken_links.py` after — it only checks internal paths, so an
+  external link can't fail it, but a typo'd Wikipedia slug still won't
+  resolve for a real visitor even though the checker stays silent about it.
+
+This is a genuine E-E-A-T signal (the page visibly cites where its specific
+claims come from, the same way a well-sourced article does) and it's
+essentially free once the research step already happened — don't skip it
+as a "nice to have" on a future build.
+
+## Don't copy a fabricated "meet the team" section from a reference site
+
+When benchmarking against another lead-gen site in the same rank-and-rent
+space, a **named founder/team-member section with photos and job titles**
+("Founder Mark Ellison", "Project Lead Denise Carter") is common — and on a
+site with no real, staffed local office, it is very likely fabricated
+identity, not a real team. This is the same category of problem as the
+already-rejected "write copy as if I am the brand" tactic and the
+already-rejected fake-review problem — inventing named people with
+specific roles to manufacture trust is fabricating a fact a real customer
+would reasonably rely on. **Do not add a team/founder section to one of
+these sites until there's an actual real person or contractor to name
+honestly.** Once a real fulfillment contractor is lined up, a truthful
+version of this section (crediting the real business/technicians who
+actually do the work) is a legitimate, valuable trust element — the
+problem is inventing people, not naming real ones.
+
+## Filtering rank-and-rent source material, worked example #4 (2026-09-14)
+
+A long Skool community Q&A transcript ("Rank & Expand Academy") got pasted
+covering a full exact-match-domain (EMD) microsite methodology. Applying
+the filtering process above to it specifically:
+
+**Kept:**
+- Outbound authority links to Wikipedia/governing bodies for E-E-A-T (see
+  above — this is the one genuinely new, adopted idea from this source).
+- A hero "check availability/your area" CTA button to reduce bounce and
+  deepen page views (see above).
+- Practical tooling tip: **Cloudflare Registrar** ($10.44/yr .com, sold at
+  cost, no renewal-year price jump, WHOIS privacy included) as a
+  cost-effective domain registrar recommendation to pass along when an
+  owner is about to buy a domain — this is neutral, useful consumer
+  advice, not a gray-hat tactic.
+- WhatConverts (call tracking with recordings/transcripts) and Vapi (AI
+  phone answering) are legitimate, real tools **worth knowing about for
+  later** — once a site is actually live and a real business wants to buy
+  its leads, call tracking that proves lead source/quality is a genuine,
+  honest value-add for that arrangement. Not needed for the initial build;
+  don't wire these in speculatively before there's a paying lead-buyer.
+
+**Explicitly rejected, by name:**
+- **Buying or claiming an existing/abandoned Google Business Profile** (the
+  transcript's Q8: "people sell them in niche Facebook groups for $200–
+  $300"). This is a direct extension of the already-rejected "fake GBP
+  verification" rule — a GBP is supposed to represent a real, specific
+  business; buying or repurposing one to represent a different business is
+  deceptive to both Google and to real customers who trust that listing.
+  Never do this for one of these sites.
+- **"Vary the naming conventions" / avoid a shared footer credit specifically
+  to keep Google from spotting a coordinated network of sites** (the
+  transcript's Q17, framed as avoiding a "footprint"). The existing
+  no-cross-linking rule already exists for a legitimate reason (each site
+  should stand as its own real business); explicitly optimizing to *evade
+  detection* of coordinated site ownership is a different thing — it's
+  detection evasion, not an honest architecture choice, and isn't something
+  this skill will help implement. In practice this doesn't even come up:
+  building each site with genuinely distinct research, prose, and identity
+  (already the standing rule here) produces sites with no shared footprint
+  as a side effect, without ever needing to think about it as evasion.
+- **The "build 50 mediocre sites, keep the winners, prune the rest"
+  portfolio philosophy** conflicts with this project's standing rules
+  (phased location rollout, no thin/templated pages, real per-location
+  research before publishing). Adopting the EMD/volume model's speed would
+  mean giving up the things that make a single site defensible under
+  Google's spam guidance. Not adopted — this playbook stays with fewer,
+  higher-quality, honestly-differentiated sites.
+- **Mass third-party indexing services (Omega Indexer)** — not rejected as
+  dishonest, just unnecessary: a real, honestly-built site with a normal
+  sitemap indexes fine through standard means. Not worth the added paid
+  dependency for this build's scale.
+
 ## Location-page research workflow (the actual step-by-step)
 
 This is the single most important workflow in this file — it's the
