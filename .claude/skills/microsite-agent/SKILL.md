@@ -184,9 +184,28 @@ content = content.replace('oldbranddomain.com', 'newbranddomain.com')
 # plus any monogram/favicon-initial change, then re-run both
 # verification scripts (see below) before committing
 ```
+**Grep the whole repo for the old name and the old domain across ALL file
+types, not just `*.html`** — the 2026-09-09 rename pass here only swept the
+HTML, and five days later `js/main.js` was still carrying the retired name
+in two places, one of them genuinely damaging: the estimate form's
+`mailto:` fallback was still addressed to `info@savannahtreepros.com`, and
+`savannahtreepros.com` is a **live competitor's domain** — so any visitor
+whose submission hit the mailto fallback would have emailed their own lead
+straight to the competitor the rename existed to get away from. A stale
+brand string in a JS string literal is not cosmetic; treat `*.js`, `*.css`,
+`*.txt` (llms.txt!), and `*.md` as in scope every time:
+```bash
+grep -rn "Old Brand Name\|oldbranddomain" --include="*.html" --include="*.css" \
+  --include="*.js" --include="*.txt" --include="*.md" .
+```
+(STATUS.md's historical entries are the one place the old name *should*
+survive — that's the audit trail, leave those.)
+
 Check specifically for: page `<title>`/meta/OG tags, canonical URLs,
 every JSON-LD `"name"` field, header/footer wordmark text, the copyright
-line, the contact email placeholder, and the favicon's inline monogram
+line, the contact email placeholder, **every user-facing string inside
+`js/main.js` (mailto subject lines and target addresses, form status
+messages)**, and the favicon's inline monogram
 (if the favicon is an inline data-URI SVG with a text initials mark, its
 literal text needs updating too — grep for it, don't assume). **Also
 check whether the logo has the old name baked into its actual artwork**
@@ -683,6 +702,71 @@ paths are documented below; read the hand-authored path first.
    rather than trying to shrink the full logo down to 16-32px; update
    its monogram text on a rename (grep for it, it's a literal
    `%3ETXT%3C/text%3E` substring in the percent-encoded data URI).
+
+## Page build sequence — follow this order, it is not optional
+
+Learned the hard way on the Foundation Repair homepage (2026-09-15), which
+was written from memory of "what the markup usually looks like" and shipped
+with twelve nonexistent CSS classes and a dead form. The owner found it
+immediately by looking at the live page. CSS fails *silently* on a selector
+it has no rule for, so none of it errored — it just rendered wrong in five
+different ways that each looked like a separate mystery bug. Order matters
+because each step below makes the next one's mistakes impossible:
+
+**1. Extract the real class vocabulary BEFORE writing any markup.** When
+adapting from a sibling site, the CSS is the contract; your memory is not.
+Two commands, run first, every time:
+```bash
+# what the stylesheet actually defines
+grep -o '^\.[a-zA-Z][a-zA-Z0-9_-]*' css/style.css | sort -u
+# what the working sibling page actually uses (the proven vocabulary)
+python -c "import re,sys;print(' '.join(sorted(set(w for m in re.finditer(r'class=\"([^\"]+)\"',open(sys.argv[1],encoding='utf-8').read()) for w in m.group(1).split()))))" ../other-site/index.html
+```
+Write markup only from that list. If a component you want doesn't exist,
+either add a real CSS rule for it or use the existing component — never
+invent a class name and assume it will be styled.
+
+**2. Check the JS hook names the same way.** `grep -o '\[data-[a-z-]*\]'
+js/main.js`. On this build the form was written with `data-booking-form`
+while `main.js` binds `[data-quote-form]` — the submit button was simply
+dead, and nothing anywhere said so.
+
+**3. Every inline SVG needs a sizing rule that matches it.** In this design
+system every `svg` is sized by a container-scoped rule
+(`.trust-strip .item svg{width:2rem}`, `.service-card .icon svg{...}`). An
+SVG with a `viewBox` and no width/height and no matching rule expands to
+the full container width — that's where the giant arrow came from. Either
+put the SVG inside a container that already has a sizing rule, or use a
+text glyph (`→`) like the sibling site's `.link` does.
+
+**4. Run all three verification scripts** (below) before looking at the
+page at all. They catch in two seconds what takes ten minutes to spot by eye.
+
+**5. Serve it over a real local HTTP server and audit the rendered page**
+— not the file, not a screenshot alone. Run the contrast + overflow +
+oversized-SVG audit in `references/rendered-page-audit.js`. Screenshots
+show you what you thought to look at; the audit checks everything.
+
+**6. Only then look at it visually**, desktop and 375px mobile.
+
+**7. Bump `?v=N` on every page whenever css or js changed** — skipping this
+means step 5 audits a stale cached stylesheet and reports problems you
+already fixed (happened on this very build).
+
+## Global colour utilities inside dark components — check both, always
+
+`.muted` is defined once as a dark grey, which is correct against the light
+page body and drops to ~2.7:1 against the dark footer — effectively
+invisible. This is the *same bug class* as the already-documented inline
+colour override that matches its own background, just arriving through a
+global utility class instead of an inline style. The fix is a scoped
+override (`.site-footer .muted{color:#9fb0c4;}`), not deleting the class
+from the markup.
+
+**This bug was inherited**: it existed on the tree-removal site first and
+was copied into the second site along with the stylesheet. When you adapt a
+stylesheet from a sibling project, its latent bugs come with it — run the
+rendered-page contrast audit on the *source* site too, and fix both.
 
 ## Verification scripts
 
