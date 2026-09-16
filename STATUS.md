@@ -410,3 +410,40 @@ internal linking is fully closed up (factor #16 was the main open gap
 last audit). AI-visibility optimization (schema/llms.txt pass) is the
 other thing mentioned as a next step in pasted video content and still
 genuinely useful to do, independent of that source.
+
+### 2026-09-16 — No image twice on a page (six new photos)
+
+Carried over from the foundation site, where Roman spotted the fault. The
+`microsite-agent` skill used to say to reuse a page's content photo as its
+hero background instead of sourcing a second one. That rule was wrong and
+this site had it on six pages: the homepage and all five service pages
+each used one file for both the hero background and the body image.
+
+The rule is rewritten and `scripts/check_image_reuse.py` enforces it. Hero
+photos are unchanged; each body slot got a second, genuinely different
+photo, chosen to show a different stage of the same job:
+
+| Page | Hero (unchanged) | Body (new) |
+|---|---|---|
+| Home | crew cutting a trunk | Savannah live oaks under Spanish moss |
+| Tree removal | climber on a bare trunk | feeding branches into a chipper |
+| Trimming & pruning | pole pruner from the ground | arborist roped into the canopy |
+| Stump grinding | an old stump before work | a stump ground flush, fresh sawdust |
+| Large & hazardous | climber harnessed in a tree | sectional dismantling from up top |
+| Emergency storm | fallen tree, worker approaching | uprooted tree across a street |
+
+The homepage pairing is the one worth noting: that section is about live
+oaks, Spanish moss and hurricane season, and it was illustrated with a
+chainsaw close-up. It now shows the canopy the paragraph is about.
+
+**Two checks from the foundation build earned their keep here.** One Pexels
+candidate turned out to be byte-identical to `tree-removal-crew-savannah.jpg`,
+already in the project under a different name — caught before download. And
+the wood chipper photo has "BANDIT" legible on the machine; that is an
+equipment manufacturer, which the skill allows, not a competing tree service.
+
+Also cleaned: every body image still carried the build-time placeholder
+caption "Replace: images/x.jpg (900x675px)". Real captions now, and the new
+images carry `width`/`height` so they do not shift layout while loading.
+
+All six checkers clean across 20 pages.
