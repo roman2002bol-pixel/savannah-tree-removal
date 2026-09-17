@@ -1,0 +1,8 @@
+# crop: the photo it was cut from.
+# check_image_reuse.py treats the crop as its source, so a page cannot show
+# both the small card version and the full-size original and still pass.
+card-tree-removal.jpg: tree-removal-crew-savannah.jpg
+card-storm-removal.jpg: storm-tree-removal-savannah.jpg
+card-large-hazardous.jpg: large-tree-removal-savannah.jpg
+card-trimming.jpg: tree-trimming-savannah.jpg
+card-stump-grinding.jpg: stump-grinding-savannah.jpg

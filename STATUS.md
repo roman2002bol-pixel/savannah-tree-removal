@@ -447,3 +447,35 @@ caption "Replace: images/x.jpg (900x675px)". Real captions now, and the new
 images carry `width`/`height` so they do not shift layout while loading.
 
 All six checkers clean across 20 pages.
+
+### 2026-09-17 — Photo cards on the services grid
+
+Roman asked for images on the service cards. The dark green icon tile is
+replaced by a 16:9 photo header on all 40 service cards: the homepage grid
+and the same grid on all seven area pages. A photo of the actual work
+carries meaning the glyph did not, and it is the same treatment the
+sibling foundation site already uses.
+
+This also closes a gap noted yesterday: the seven area pages had **no
+images at all**. They now carry five each.
+
+Card crops are 600x338, cut from the 900x675 originals and downscaled, so
+the five-card grid costs about 310 KB rather than 800 KB. Downscaling
+resamples, which is a real reduction -- unlike re-compressing at the same
+size, which the earlier image pass proved buys about 4%.
+
+**One trap this created, and the fix.** A card crop and its full-size
+original are the same photograph to a visitor and two unrelated filenames
+to `check_image_reuse.py`. The checker now reads an optional
+`images/.derivatives` manifest (`card-trimming.jpg:
+tree-trimming-savannah.jpg`, one pair per line) and counts a crop as its
+source. Verified with a negative test: putting `card-trimming.jpg` and
+`tree-trimming-savannah.jpg` on the same page now fails with both names in
+the report. No page currently does.
+
+Assets bumped to `?v=4`. All six checkers clean across 20 pages.
+
+**Left alone deliberately:** the three "how it works" step cards on the
+homepage still have icon tiles above numbers that are already in the
+heading text -- the same redundancy Roman flagged on the foundation site.
+Different component, not asked for here, one-line change if wanted.
