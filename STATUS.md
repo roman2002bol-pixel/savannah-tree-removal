@@ -479,3 +479,22 @@ Assets bumped to `?v=4`. All six checkers clean across 20 pages.
 homepage still have icon tiles above numbers that are already in the
 heading text -- the same redundancy Roman flagged on the foundation site.
 Different component, not asked for here, one-line change if wanted.
+
+### 2026-09-22 — Eyebrow dash and step icons removed
+
+The two leftovers flagged after the photo-card pass, both decisions Roman
+had already made on the sibling foundation site:
+
+- `.eyebrow::before` drew a 24x2 amber dash in front of every section
+  label. Deleted from the stylesheet, not the markup, so it cannot come
+  back on a page written later.
+- The three "How It Works" cards had a dark icon tile sitting above a
+  number that was already in the heading text ("2. Free on-site estimate")
+  -- two graphics saying "step 2". Icon out; the number is now an amber
+  badge, matching the foundation site.
+
+Assets bumped to `?v=5`. All six checkers clean across 20 pages.
+
+**Still carrying icon tiles:** the "situations we handle" grids on the five
+service pages, 20 tiles in total. Same visual device, not flagged yet, left
+alone rather than widened into unasked scope.

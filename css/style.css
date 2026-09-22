@@ -153,8 +153,7 @@ img{max-width:100%; display:block;}
 section{padding-block:clamp(3rem,6vw,4.5rem);}
 .section-head{max-width:42rem; margin-bottom:2.25rem;}
 .section-head.center{margin-inline:auto; text-align:center;}
-.eyebrow{display:inline-flex; align-items:center; gap:.5rem; font-family:var(--font-head); font-weight:800; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--amber-dark);}
-.eyebrow::before{content:""; width:1.5rem; height:2px; background:var(--amber);}
+.eyebrow{display:inline-block; font-family:var(--font-head); font-weight:800; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--amber-dark);}
 
 /* -------------------------------------------------- badges/trust ---- */
 .badge-list{display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem;}
@@ -188,6 +187,16 @@ section{padding-block:clamp(3rem,6vw,4.5rem);}
 .service-card.has-photo .card-photo img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
 .service-card.has-photo:hover .card-photo img{transform:scale(1.045);}
 .service-card.has-photo .card-body{padding:1.5rem; display:flex; flex-direction:column; gap:.7rem; flex:1;}
+
+/* Numbered step badge for the How It Works row. Replaces an icon tile that
+   sat above a number already present in the heading -- two graphics saying
+   "step 2". The number was doing the work. */
+.step-num{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:2.4rem; height:2.4rem; border-radius:50%; flex:none;
+  background:var(--amber); color:#2b1400;
+  font-family:var(--font-head); font-weight:800; font-size:1.05rem;
+}
 
 .package-list{list-style:none; margin:0 0 1.4rem; padding:0; display:flex; flex-direction:column; gap:.5rem;}
 .package-list li{display:flex; align-items:flex-start; gap:.55rem; font-size:.92rem;}
