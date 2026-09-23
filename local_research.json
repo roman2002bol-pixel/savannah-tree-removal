@@ -1,0 +1,86 @@
+{
+  "historic-district-downtown-savannah": {
+    "name": "Downtown Savannah",
+    "title": "Street trees, private yards and downtown access",
+    "summary": "Identify public street trees, agree on private debris removal and plan access before accepting a downtown estimate.",
+    "cards": [
+      [
+        "Who handles a tree beside the sidewalk?",
+        "Savannah Urban Forestry maintains trees in city rights-of-way. The city directs routine requests to 311 and says its Greenscapes Division does not collect tree debris from private property.",
+        "https://www.savannahga.gov/762/Urban-Forestry",
+        "Savannah Urban Forestry"
+      ],
+      [
+        "What belongs in a private removal estimate?",
+        "Confirm the trunk location against the property boundary before authorizing work. Ask the estimator to separate dismantling, hauling, stump grinding and surface restoration. A tree standing near a sidewalk is not automatically privately owned.",
+        null,
+        null
+      ],
+      [
+        "How does downtown access change the plan?",
+        "Photograph the lane or driveway, narrowest gate, overhead wires and nearby masonry from a safe position. Agree where trucks can stand and how pedestrians stay clear. If public space is needed, establish the required permission before scheduling.",
+        null,
+        null
+      ]
+    ],
+    "next": "For a tree over a roof or courtyard, compare the access and lowering options in our large-tree removal guide.",
+    "service": "large-hazardous-tree-removal",
+    "anchor": "Large and hazardous tree removal"
+  },
+  "pooler-ga": {
+    "name": "Pooler",
+    "title": "Planning a tree removal in Pooler",
+    "summary": "Find the city tree-removal application and prepare an estimate that covers access, roots and the finished yard.",
+    "cards": [
+      [
+        "Start with the city application",
+        "Pooler lists a Tree Removal Permit Application under Planning & Zoning. Use the city forms page to reach the current application and confirm whether it applies to the address and proposed work; the listing does not establish that every residential removal needs a permit.",
+        "https://www.pooler-ga.gov/online-services/applications-forms/",
+        "Pooler applications and forms"
+      ],
+      [
+        "Describe the tree and the equipment route",
+        "Prepare photos of the whole tree, trunk base and nearby structures without approaching unstable limbs. Include the location on the lot, the reason for removal and the narrowest access point. Flag irrigation, buried services and neighboring property along the proposed route.",
+        null,
+        null
+      ],
+      [
+        "Agree on what remains afterward",
+        "Ask whether the price includes hauling logs and branches, stump grinding, chip removal and backfill. If the tree borders a shared landscape area, establish ownership and any neighborhood approval first. A city inquiry and a community approval answer different questions.",
+        null,
+        null
+      ]
+    ],
+    "next": "Planning turf or a planting bed afterward? Specify the intended use before agreeing on stump depth and cleanup.",
+    "service": "stump-grinding-removal",
+    "anchor": "Stump grinding and site cleanup"
+  },
+  "skidaway-island-the-landings": {
+    "name": "Skidaway Island and The Landings",
+    "title": "Tree-work planning inside The Landings",
+    "summary": "Use the association tree-request route and confirm commercial access before organizing equipment and removal.",
+    "cards": [
+      [
+        "Use the association tree-request route",
+        "The Landings member guide directs tree-removal requests to its service-request portal. It also provides commercial rules and department contacts. Submit the proposed work through the current association process before booking removal.",
+        "https://landings.org/member-welcome-guide/",
+        "The Landings member welcome guide"
+      ],
+      [
+        "Confirm contractor entry separately",
+        "Tell the estimator whether the property is inside The Landings. Confirm the current commercial access arrangements, permitted work times and staging location with the association. Guest-entry instructions should not be assumed to cover commercial tree equipment.",
+        null,
+        null
+      ],
+      [
+        "Protect the route as well as the house",
+        "Discuss access width, irrigation, driveway protection and where logs and chips will be loaded. A tree near a lagoon, golf course or common area calls for an ownership check before work crosses a boundary. Do not assume that all Skidaway Island properties follow Landings rules.",
+        null,
+        null
+      ]
+    ],
+    "next": "When clearance can be achieved without removing the tree, ask for a pruning objective and the branches included in the quote.",
+    "service": "tree-trimming-pruning",
+    "anchor": "Tree trimming and pruning options"
+  }
+}
