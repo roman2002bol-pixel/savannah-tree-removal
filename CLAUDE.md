@@ -24,3 +24,10 @@ before starting a session, update it after finishing one. This is the
 "breadcrumb" system: it exists so a fresh Claude Code session (or a
 session that's been compacted) can pick up exactly where the last one
 left off without re-deriving the plan from scratch.
+
+
+## Content research and documentation
+
+Read CONTENT-PLAYBOOK.md before content or SEO changes. LOCAL-RESEARCH.md records the primary sources and video references; local_research.json is the editable source for researched guides. These September 23 instructions supersede older suggestions to duplicate area-page examples or display area counts as trust signals.
+
+Roman explicitly requires all new changes and useful techniques to be documented. Update STATUS.md after each batch, and maintain the playbook and source ledger when a method or researched fact changes. Record validation and actual publication status, not just intended work.

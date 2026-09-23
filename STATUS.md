@@ -513,3 +513,8 @@ Reviewed two further Jesse Cunningham video transcripts and checked local primar
 Tree: corrected outdated/overbroad Downtown and Landings FAQ claims; added generated sitemap.xml and robots.txt using the existing future production domain. Production contacts, working lead destination and domain configuration remain launch prerequisites.
 
 Validation: six static audits pass on all 51 HTML pages. Repeated content generation produces identical HTML. Desktop and 375px mobile checks show no horizontal overflow; researched sections and source links render correctly. No real customer work or reviews were invented.
+
+
+## 2026-09-23 – documentation follow-through
+
+Added CONTENT-PLAYBOOK.md covering implemented techniques, data/rendering ownership, rebuild behavior, QA, verified publication and unfinished launch work. CLAUDE.md now points future sessions to it and records the user requirement to document every new change and useful technique. LOCAL-RESEARCH.md remains the source ledger. Content publication verified at commit `c823a1bcebc093975c18025123e804f010f0ce0c`; this documentation update makes no website UI change.
