@@ -21,3 +21,10 @@ Use the association tree-request route and confirm commercial access before orga
 - [The Landings member welcome guide](https://landings.org/member-welcome-guide/)
 
 Rebuild: run `python local_research.py` after any tree HTML edits. Foundation content_review calls it automatically. Data is in local_research.json. Existing preview contact placeholders and future-domain canonical URLs still need launch configuration; no Search Console submission was made.
+
+
+## Sources checked September 24, 2026
+
+- UGA Extension: https://site.extension.uga.edu/bartow/hazardous-trees/ — general tree-risk and pruning mechanisms, not a claim about Savannah prevalence.
+- UGA Extension: https://site.extension.uga.edu/bartow/construction-damage-to-trees/ — construction/root-zone damage; used for removal planning, not as proof that any specific tree must come down.
+- Georgia Power: https://www.georgiapower.com/about/grid-reliability/land-tree-management/faqs.html — utility guidance on trees and downed lines.

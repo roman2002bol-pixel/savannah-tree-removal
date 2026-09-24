@@ -41,3 +41,10 @@ Deep guides: Downtown Savannah, Pooler, Skidaway Island / The Landings. Repeated
 After editing HTML, run `python local_research.py`. Run `python build_meta.py` when public pages or canonical URLs change; it derives sitemap.xml from the HTML canonical links and writes robots.txt. These currently target the chosen future production domain, not the GitHub preview address. Direct FAQ edits remain in the static HTML.
 
 Published content commit: `c823a1bcebc093975c18025123e804f010f0ce0c`.
+
+
+## September 24 update – visible citations and visual video review
+
+See VIDEO-REVIEW-2026-09-24.md for observed frames, the visible research prompt and an adapted reusable brief. Citation links must be recognizable without hover: underline and sufficient color contrast, including keyboard focus. Put the source in the paragraph containing its claim; do not rely on a distant reference box. CSS cache version is now 20260924 across public pages and Foundation generators.
+
+Researched local sections now appear after the page hero. Keep the single marked section and the idempotent local_research renderer. Foundation service citations belong in build_services.py; Tree service citations are in the static service HTML. Update these sources when rebuilding. The previous note that this pass made no CSS change applies only to September 23.
