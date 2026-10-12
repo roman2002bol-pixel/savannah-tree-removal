@@ -539,3 +539,7 @@ Publication confirmed: GitHub Pages built content commit 20ed8241a9688b0758e0bda
 **Verification.** All seven checks pass across 20 pages, including the new `check_clean_urls.py` and `check_broken_links.py`, which now resolves clean URLs the way the hosts do.
 
 **Still to do at launch** (see the skill's "Launch on a real domain" section): confirm every sitemap URL returns 200 with a self canonical on the real domain, submit the sitemap in Search Console the same day, and add the apex-to-`www` redirect in Cloudflare. The domain is not live yet.
+
+### 2026-10-12 – `.assetsignore` for the Cloudflare launch
+
+Added `.assetsignore` so Cloudflare's static-asset deploy will not publish non-website files: `.claude`, `*.md`, `*.py`, `*.pyc`, `__pycache__`, `images/.derivatives`, `local_research.json`, `.gitignore`, `.nojekyll`. Checked against `git ls-files`: the only non-page files left to deploy are `robots.txt`, `sitemap.xml` and (where present) `llms.txt`. GitHub Pages ignores the file, so the preview is unchanged. Reason: NEXUS had its STATUS, README and skills publicly served on its business domain until today. At launch, `curl -I https://www.<domain>/STATUS.md` must return 404 (launch step 5 in the skill).
