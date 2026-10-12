@@ -529,3 +529,13 @@ Foundation: replaced the unsupported city-wide soil/water-table description with
 Validation: six static audits across 51 pages; repeat rendering produces no HTML differences. Actual browser navigation from the Foundation Piering citation opened USDA's POOLER SERIES document. Desktop and mobile rendering checked. Publication confirmation is recorded below after deployment.
 
 Publication confirmed: GitHub Pages built content commit 20ed8241a9688b0758e0bda5b12c9f36f03960ce; public service page verified with underlined source links on September 24, 2026.
+
+### 2026-10-12 – Clean URLs, ahead of the Cloudflare launch
+
+**What changed.** Canonical, `og:url`, JSON-LD, sitemap `<loc>`, `llms.txt` and every internal link now name extensionless URLs (`/about`, `/services/tree-removal`, `./` and `../` for home, anchors kept). 21 files, line-for-line replacements.
+
+**Why.** On NEXUS, Cloudflare answers every `/page.html` with a 307 to `/page`, so `.html` canonicals pointed at redirects; Search Console showed half that site "not indexed" and three real pages unknown to Google. This site is planned for Cloudflare, so the same thing would have happened on day one. On the current GitHub Pages preview both forms return 200 -- verified -- so nothing breaks now.
+
+**Verification.** All seven checks pass across 20 pages, including the new `check_clean_urls.py` and `check_broken_links.py`, which now resolves clean URLs the way the hosts do.
+
+**Still to do at launch** (see the skill's "Launch on a real domain" section): confirm every sitemap URL returns 200 with a self canonical on the real domain, submit the sitemap in Search Console the same day, and add the apex-to-`www` redirect in Cloudflare. The domain is not live yet.
